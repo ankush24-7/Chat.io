@@ -18,6 +18,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(logger);
 app.use(cors(corsOptions));
 
+app.use("/api/auth", require("./routes/authRoutes"));
+
 mongoose.connection.once("open", () => {
   console.log("Connected to MongoDB");
   app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
