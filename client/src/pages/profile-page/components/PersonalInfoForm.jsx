@@ -4,7 +4,7 @@ import { Pen } from "@/assets/icons/icons";
 import userAPI from "@/services/api/userAPI";
 import { useUser } from "@/contexts/userContext";
 import EditPersonalInfo from "./EditPersonalInfo";
-import { useToast } from "@/contexts/ToastContext";
+import { useToast } from "@/contexts/toastContext";
 import SpinLoader from "@/components/loaders/SpinLoader";
 
 const PersonalInfoForm = () => {

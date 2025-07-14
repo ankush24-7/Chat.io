@@ -1,7 +1,7 @@
 import { useState } from "react";
 import userAPI from "@/services/api/userAPI";
 import { useUser } from "@/contexts/userContext";
-import { useToast } from "@/contexts/ToastContext";
+import { useToast } from "@/contexts/toastContext";
 import { CameraIcon, Del } from "@/assets/icons/icons";
 import DisplayPicture from "@/components/ui/DisplayPicture";
 import ProfileLoader from "@/components/loaders/ProfileLoader";
