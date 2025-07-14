@@ -1,12 +1,14 @@
 const authService = require("../services/authService");
 
 const handleRegistration = async (req, res) => {
-  const { fullName, email, password } = req.body;
+  const { fullName, username, email, color, password } = req.body;
 
   try {
     const { accessToken, refreshToken } = await authService.registerUser({
       fullName,
+      username,
       email,
+      color,
       password,
     });
 
@@ -25,14 +27,14 @@ const handleRegistration = async (req, res) => {
 };
 
 const handleLogin = async (req, res) => {
-  const { email, password } = req.body;
+  const { input, password } = req.body;
   
-  if (!email || !password) {
+  if (!input || !password) {
     return res.status(400).json({ message: "Please enter all fields" });
   }
 
   try {
-    const { accessToken, refreshToken } = await authService.loginUser({ email, password });
+    const { accessToken, refreshToken } = await authService.loginUser({ input, password });
 
     res.cookie("jwt", refreshToken, {
       httpOnly: true,

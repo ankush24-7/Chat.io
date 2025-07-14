@@ -3,17 +3,24 @@ const jwt = require("jsonwebtoken");
 const userDAO = require("../dao/userDAO");
 const generateTokens = require("../utils/generateTokens");
 
-async function registerUser({ fullName, email, password }) {
+async function registerUser({ fullName, username, email, color, password }) {
   const emailAlreadyExists = await userDAO.findUserByEmail(email);
   if (emailAlreadyExists) {
     throw new Error("User already exists");
+  }
+
+  const usernameAlreadyExists = await userDAO.findUserByUsername(username);
+  if (usernameAlreadyExists) {
+    throw new Error("Username already exists");
   }
 
   const hashedPassword = await bcrypt.hash(password, 10);
 
   const user = await userDAO.createUser({
     fullName,
+    username,
     email,
+    color,
     password: hashedPassword,
   });
 
@@ -24,8 +31,8 @@ async function registerUser({ fullName, email, password }) {
   return { accessToken, refreshToken };
 }
 
-async function loginUser({ email, password }) {
-  const user = await userDAO.findUserByEmail(email);
+async function loginUser({ input, password }) {
+  const user = await userDAO.findUserByEmailOrUsername(input);
   if (!user) {
     throw new Error("Invalid credentials");
   }
