@@ -2,7 +2,7 @@ import authAPI from "@/services/api/authAPI";
 import DropDown from "../dropdowns/DropDown";
 import useDropDown from "@/hooks/useDropDown";
 import DisplayPicture from "./DisplayPicture";
-import { useUser } from "@/contexts/UserContext";
+import { useUser } from "@/contexts/userContext";
 import { Link, useNavigate } from "react-router-dom";
 import { Profile, Logout } from "@/assets/icons/icons";
 

@@ -1,4 +1,4 @@
-import { useUser } from "@/contexts/UserContext";
+import { useUser } from "@/contexts/userContext";
 import contactAPI from "@/services/api/contactAPI";
 import DisplayPicture from "@/components/ui/DisplayPicture";
 
