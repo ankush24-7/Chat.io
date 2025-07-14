@@ -1,6 +1,6 @@
 import { useState } from "react";
 import authAPI from "@/services/api/authAPI";
-import { useToast } from "@/contexts/ToastContext";
+import { useToast } from "@/contexts/toastContext";
 import { authPageIcons } from "@/assets/icons/icons";
 import { Link, useNavigate } from "react-router-dom";
 import SpinLoader from "@/components/loaders/SpinLoader";
