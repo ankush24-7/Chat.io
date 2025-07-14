@@ -3,7 +3,7 @@ import authAPI from "@/services/api/authAPI";
 
 const axiosInstance = axios.create({
   baseURL: process.env.NODE_ENV === "production"
-    ? "https://taskos.onrender.com"
+    ? "https://chat-io-backend-jhed.onrender.com"
     : "http://localhost:3000",
   headers: {
     "Content-Type": "application/json",
@@ -13,7 +13,7 @@ const axiosInstance = axios.create({
 
 export const base = axios.create({
   baseURL: process.env.NODE_ENV === "production"
-    ? "https://taskos.onrender.com"
+    ? "https://chat-io-backend-jhed.onrender.com"
     : "http://localhost:3000",
   withCredentials: true,
 })
