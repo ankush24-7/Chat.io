@@ -1,0 +1,34 @@
+.loader {
+  animation: dash 2s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 0, 289;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 289, 0;
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dasharray: 0, 289;
+    stroke-dashoffset: -289;
+  }
+}
+
+.loader-pulse {
+  background: linear-gradient(120deg, rgba(240, 240, 240, 0.15) 35%, rgba(240, 240, 240, 0.225) 50%, rgba(240, 240, 240, 0.15) 65%);
+  background-size: 200% 100%;
+  animation: pulse 2s infinite linear;
+}
+
+@keyframes pulse {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

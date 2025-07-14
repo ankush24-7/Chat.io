@@ -1,1 +1,15 @@
 @import "tailwindcss";
+
+@theme {
+  --color-prim-dark: #111;
+  --color-second-dark: #181818;
+  --color-dark-hover: #3d3d3d;
+  --color-grad-top: #404040;
+  --color-grad-bottom: #282828;
+  --color-prim-text: #ffffff;
+  --color-second-text: #b3b3b3;
+  --color-card: #242526;
+  --color-card-hover: #3a3b3c;
+  --color-prim-accent: #155dfc;
+  --color-accent-hover: #2b7fff;
+}
