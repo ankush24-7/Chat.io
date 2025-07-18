@@ -36,13 +36,13 @@ const sendMessage = async (req, res) => {
   }
   
   try {
-    await messageService.sendMessage({
+    const newMessage = await messageService.sendMessage({
       senderId,
       receiverId,
       text,
       image: image ? image.buffer : null,
     });
-    return res.status(200).json({ message: "Message sent successfully" });
+    return res.status(200).json({ newMessage });
   } catch (error) {
     res.status(500).json({ message: "Server error" });
   }

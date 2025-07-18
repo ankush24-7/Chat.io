@@ -3,7 +3,8 @@ const streamifier = require("streamifier");
 const cloudinary = require("../utils/cloudinary");
 
 const getMessages = async (senderId, receiverId) => {
-  return await messageDAO.getMessages(senderId, receiverId);
+  const messages = await messageDAO.getMessages(senderId, receiverId);
+  return messages;
 };
 
 const sendMessage = async ({ senderId, receiverId, text, image }) => {
@@ -35,7 +36,8 @@ const sendMessage = async ({ senderId, receiverId, text, image }) => {
     image: result?.public_id || "",
   };
   
-  return await messageDAO.sendMessage(newMessage);
+  await messageDAO.sendMessage(newMessage);
+  return newMessage;
 };
 
 const deleteMessage = async (messageId, senderId) => {

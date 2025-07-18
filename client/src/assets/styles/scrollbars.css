@@ -15,16 +15,12 @@
 }
 
 .vertical-scrollbar::-webkit-scrollbar {
-  width: 4px;
+  width: 6px;
 }
 
 .vertical-scrollbar::-webkit-scrollbar-thumb {
-  background-color: #1110;
-}
-
-.vertical-scrollbar:hover::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background-color: #0005;
+  background-color: #9A6D38;
 }
 
 .vertical-scrollbar::-webkit-scrollbar-track {
