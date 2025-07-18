@@ -1,6 +1,11 @@
 const whitelist = [
   "http://localhost:5173",
+  "https://chat-io-tau.vercel.app",
   "https://chat-io-tau.vercel.app/",
+  "https://chat-io-ankushs-projects-11b078a3.vercel.app",
+  "https://chat-io-ankushs-projects-11b078a3.vercel.app/",
+  "https://chat-io-git-main-ankushs-projects-11b078a3.vercel.app",
+  "https://chat-io-git-main-ankushs-projects-11b078a3.vercel.app/",
 ];
 
 const corsOptions = {
