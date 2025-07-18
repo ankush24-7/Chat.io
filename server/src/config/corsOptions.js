@@ -1,5 +1,6 @@
 const whitelist = [
   "http://localhost:5173",
+  "https://chat-io-tau.vercel.app/",
 ];
 
 const corsOptions = {
