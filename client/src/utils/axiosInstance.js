@@ -71,10 +71,10 @@ axiosInstance.interceptors.response.use(
       isRefreshing = true;
 
       try {
-        const newAccessToken = await authAPI.refresh();
-        localStorage.setItem("accessToken", newAccessToken);
-        axiosInstance.defaults.headers.common["Authorization"] = "Bearer " + newAccessToken;
-        processQueue(null, newAccessToken);
+        const { accessToken } = await authAPI.refresh();
+        localStorage.setItem("accessToken", accessToken);
+        axiosInstance.defaults.headers.common["Authorization"] = "Bearer " + accessToken;
+        processQueue(null, { accessToken });
         return axiosInstance(originalRequest);
       } catch (refreshError) {
         processQueue(refreshError, null);

@@ -1,3 +1,4 @@
+const { io, getUserSocketId } = require("../utils/socket");
 const messageService = require("../services/messageService");
 
 const getMessages = async (req, res) => {
@@ -42,6 +43,12 @@ const sendMessage = async (req, res) => {
       text,
       image: image ? image.buffer : null,
     });
+
+    const receiverSocketId = getUserSocketId(receiverId);
+    if (receiverSocketId) {
+      io.to(receiverSocketId).emit("newMessage", newMessage);
+    }
+
     return res.status(200).json({ newMessage });
   } catch (error) {
     res.status(500).json({ message: "Server error" });

@@ -28,7 +28,7 @@ async function registerUser({ fullName, username, email, color, password }) {
   user.refreshToken = refreshToken;
   await userDAO.saveUser(user);
 
-  return { accessToken, refreshToken };
+  return { accessToken, refreshToken, userId: user._id };
 }
 
 async function loginUser({ input, password }) {
@@ -46,7 +46,7 @@ async function loginUser({ input, password }) {
   user.refreshToken = refreshToken;
   await userDAO.saveUser(user);
 
-  return { accessToken, refreshToken };
+  return { accessToken, refreshToken, userId: user._id };
 }
 
 async function logoutUser(refreshToken) {
@@ -64,7 +64,7 @@ async function refreshUser(refreshToken) {
         refreshToken,
         process.env.REFRESH_TOKEN_SECRET,
         (err, decoded) => {
-          if (err) reject(new Error('Invalid refresh token'));
+          if (err) reject(new Error("Invalid refresh token"));
           else resolve(decoded);
         }
       );
@@ -72,16 +72,16 @@ async function refreshUser(refreshToken) {
 
     const user = await userDAO.findUserByRefreshToken(refreshToken);
     if (!user) {
-      throw new Error('User not found');
+      throw new Error("User not found");
     }
 
     const accessToken = jwt.sign(
       { userId: decoded.userId },
       process.env.ACCESS_TOKEN_SECRET,
-      { expiresIn: '15min' }
+      { expiresIn: "15min" }
     );
 
-    return accessToken;
+    return { accessToken, userId: user._id };
   } catch (error) {
     throw error;
   }
@@ -91,5 +91,5 @@ module.exports = {
   registerUser,
   loginUser,
   logoutUser,
-  refreshUser
+  refreshUser,
 };

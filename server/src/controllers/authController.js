@@ -4,7 +4,7 @@ const handleRegistration = async (req, res) => {
   const { fullName, username, email, color, password } = req.body;
 
   try {
-    const { accessToken, refreshToken } = await authService.registerUser({
+    const { accessToken, refreshToken, userId } = await authService.registerUser({
       fullName,
       username,
       email,
@@ -19,7 +19,7 @@ const handleRegistration = async (req, res) => {
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
-    return res.status(201).json({ message: "User created successfully", accessToken });
+    return res.status(201).json({ userId, accessToken });
   } catch (error) {
     console.error(error);
     return res.status(400).json({ message: error.message });
@@ -34,7 +34,7 @@ const handleLogin = async (req, res) => {
   }
 
   try {
-    const { accessToken, refreshToken } = await authService.loginUser({ input, password });
+    const { accessToken, refreshToken, userId } = await authService.loginUser({ input, password });
 
     res.cookie("jwt", refreshToken, {
       httpOnly: true,
@@ -43,7 +43,7 @@ const handleLogin = async (req, res) => {
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
-    return res.json({ message: "User logged in successfully", accessToken });
+    return res.json({ userId, accessToken });
   } catch (error) {
     console.log(error);
     return res.status(400).json({ message: error.message });
@@ -56,8 +56,8 @@ const handleRefresh = async (req, res) => {
   const refreshToken = cookies.jwt;
 
   try {
-    const accessToken = await authService.refreshUser(refreshToken);
-    return res.json({ accessToken });
+    const { accessToken, userId } = await authService.refreshUser(refreshToken);
+    return res.json({ accessToken, userId });
   } catch (error) {
     console.error(error);
     return res.status(403).json({ message: error.message });

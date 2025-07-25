@@ -5,7 +5,6 @@ const getMessages = async (userId) => {
     const response = await axiosInstance.get(`api/message/${userId}`);
     return response.data;
   } catch (error) {
-    console.error("Error fetching messages:", error);
     throw error;
   }
 };

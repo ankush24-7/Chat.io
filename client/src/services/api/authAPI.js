@@ -5,7 +5,7 @@ const authenticate = async (user, route) => {
   try {
     const response = await axiosInstance.post(`/api/auth/${route}`, user);
     localStorage.setItem("accessToken", response.data.accessToken);
-    return response.status;
+    return response;
   } catch (error) {
     return error.response.data.message;
   }
@@ -23,7 +23,7 @@ const logout = async () => {
 const refresh = async () => {
   try {
     const response = await base.post("/api/auth/refresh");
-    return response.data.accessToken;
+    return response.data.userId;
   } catch (error) {
     console.error(error);
   }

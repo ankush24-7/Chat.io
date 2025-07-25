@@ -37,6 +37,7 @@ const sendMessage = async ({ senderId, receiverId, text, image }) => {
   };
   
   await messageDAO.sendMessage(newMessage);
+
   return newMessage;
 };
 
