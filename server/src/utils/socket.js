@@ -7,7 +7,15 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: ["http://localhost:5173", "https://chat-io-tau.vercel.app/"],
+    origin: [
+      "http://localhost:5173",
+      "https://chat-io-tau.vercel.app/",
+      "https://chat-io-tau.vercel.app",
+      "https://chat-io-ankushs-projects-11b078a3.vercel.app/",
+      "https://chat-io-ankushs-projects-11b078a3.vercel.app",
+      "https://chat-io-git-main-ankushs-projects-11b078a3.vercel.app/",
+      "https://chat-io-git-main-ankushs-projects-11b078a3.vercel.app",
+    ],
     optionsSuccessStatus: 200,
     credentials: true,
   },
@@ -20,7 +28,7 @@ function getUserSocketId(userId) {
 const userSockets = new Map();
 io.on("connection", (socket) => {
   console.log(`User connected: ${socket.id}`);
-  
+
   const userId = socket.handshake.query.userId;
   if (userId) userSockets.set(userId, socket.id);
   console.log(userId, socket.id);
