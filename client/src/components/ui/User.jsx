@@ -1,20 +1,15 @@
-import authAPI from "@/services/api/authAPI";
+import { Link } from "react-router-dom";
 import DropDown from "../dropdowns/DropDown";
 import useDropDown from "@/hooks/useDropDown";
 import DisplayPicture from "./DisplayPicture";
+import { useAuth } from "@/contexts/authContext";
 import { useUser } from "@/contexts/userContext";
-import { Link, useNavigate } from "react-router-dom";
 import { Profile, Logout } from "@/assets/icons/icons";
 
 const User = () => {
-  const navigate = useNavigate();
   const { user } = useUser();
+  const { handleLogout } = useAuth();
   const { isOpen, setIsOpen, dropdownRef } = useDropDown();
-
-  const handleLogout = async () => {
-    await authAPI.logout();
-    navigate("/", { replace: true });
-  };
 
   return (
     <div className="relative" ref={dropdownRef}>

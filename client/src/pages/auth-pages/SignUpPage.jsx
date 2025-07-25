@@ -1,17 +1,14 @@
 import { useState } from "react";
-import authAPI from "@/services/api/authAPI";
+import { Link } from "react-router-dom";
 import validate from "@/utils/validateForm";
-import { useToast } from "@/contexts/toastContext";
+import { useAuth } from "@/contexts/authContext";
 import { authPageIcons } from "@/assets/icons/icons";
-import { Link, useNavigate } from "react-router-dom";
 import SpinLoader from "@/components/loaders/SpinLoader";
 
 const SignUpPage = () => {
-  const navigate = useNavigate();
+  const { handleSignUp, isSignUpLoading: isLoading } = useAuth();
   const [password, setPassword] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const { setToastMessage } = useToast();
   const [errors, setErrors] = useState({
     fullName: "",
     username: "",
@@ -26,20 +23,6 @@ const SignUpPage = () => {
     password: "white",
     confirmPassword: "white",
   });
-  const displayColors = [
-    "#E00000",
-    "#F59F00",
-    "#B1401B",
-    "#F0192E",
-    "#5E807F",
-    "#4E6A69",
-    "#336699",
-    "#8300E0",
-    "#C51BC5",
-    "#008F70",
-    "#625141",
-    "#545964",
-  ];
 
   const validateField = (e) => {
     const { name, value } = e.target;
@@ -64,41 +47,11 @@ const SignUpPage = () => {
     }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-    const { fullName, username, email, password } = e.target;
-    const user = {
-      fullName: fullName.value,
-      username: username.value,
-      email: email.value,
-      password: password.value,
-      color: displayColors[Math.floor(Math.random() * displayColors.length)],
-    };
-    if (!user.fullName || !user.username || !user.email || !user.password) {
-      setIsLoading(false);
-      setToastMessage({ message: "Please fill all fields", type: "error", position: "top-center" });
-      return;
-    }
-    
-    const res = await authAPI.authenticate(user, "register");
-    setIsLoading(false);
-    if (res === 201) {
-      navigate("/chat");
-      setToastMessage({ 
-        type: "success",
-        position: "top-center",
-        message: "Welcome to Chat.io", 
-      });
-    }
-    else setToastMessage({ message: res, type: "error", position: "top-center" });
-  };
-
   return (
-    <div className="w-full h-dvh flex-grow overflow-y-scroll scrollbar-hide sm:pb-10 bg-gradient-to-b from-grad-top to-grad-bottom">
+    <div className="w-full h-dvh flex-grow overflow-y-scroll vertical-scrollbar sm:pb-10 bg-gradient-to-t from-grad-top to-grad-bottom">
       <div className="auth-form flex flex-col items-center w-full md:w-[35%] md:rounded-2xl h-full md:h-fit px-10 pt-8 pb-10 sm:mt-10 mx-auto bg-black/30">
         <p className="text-white text-3xl">Create Your Account</p>
-        <form className="flex flex-col w-full mt-5" onSubmit={handleSubmit}>
+        <form className="flex flex-col w-full mt-5" onSubmit={handleSignUp}>
           <label htmlFor="fullName" className="text-white">Full Name</label>
           <input
             id="fullName"
@@ -187,7 +140,7 @@ const SignUpPage = () => {
 
           <button
             type="submit"
-            className="flex items-center justify-center p-3 rounded-md mt-5 mb-2 w-full cursor-pointer text-prim-text bg-prim-accent hover:bg-accent-hover">
+            className="flex items-center justify-center p-3 rounded-md mt-5 mb-2 w-full cursor-pointer text-prim-text bg-gradient-to-r from-accent-left to-accent-right hover:scale-101 transition-all duration-300 ease-in-out">
             {isLoading ? (
               <SpinLoader width="24px" height="24px" color="#FFF" />
             ) : (

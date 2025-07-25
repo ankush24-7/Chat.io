@@ -1,8 +1,7 @@
 import "@/assets/styles/animations.css";
-import "@/assets/styles/scrollbars.css";
 import { Outlet } from "react-router-dom";
 import Header from "./components/ui/Header";
-import { UserProvider } from "./contexts/userContext";
+import { UserProvider } from "@/contexts/userContext";
 
 const App = () => {
   return (
@@ -12,7 +11,7 @@ const App = () => {
         <Outlet />
       </div>
     </UserProvider>
-  )
-}
+  );
+};
 
 export default App;

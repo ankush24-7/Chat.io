@@ -2,7 +2,7 @@ import { SearchIcon } from "@/assets/icons/icons";
 
 const SearchBar = ({ placeholder, search, setSearch }) => {
   return (
-    <form className="relative group" onSubmit={(e) => e.preventDefault()}>
+    <form className="relative group grow" onSubmit={(e) => e.preventDefault()}>
       <SearchIcon className="w-5 h-5 ml-2 absolute top-1/2 -translate-y-1/2 stroke-gray-300 group-focus:stoke-white" />
       <label htmlFor="search" className="absolute -top-96">
         Search

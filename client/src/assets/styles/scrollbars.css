@@ -20,7 +20,7 @@
 
 .vertical-scrollbar::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background-color: #9A6D38;
+  background-image: linear-gradient(to bottom, #2b7fff, #9810fA);
 }
 
 .vertical-scrollbar::-webkit-scrollbar-track {

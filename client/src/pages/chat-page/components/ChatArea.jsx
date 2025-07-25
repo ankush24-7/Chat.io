@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { useUser } from "@/contexts/userContext";
 import formatDateTime from "@/utils/formatDateTime";
 import { useMessage } from "@/contexts/messageContext";
@@ -5,7 +6,8 @@ import ChatAreaLoader from "@/components/loaders/ChatAreaLoader";
 
 const ChatArea = () => {
   const { user } = useUser();
-  const { messages, isLoading, selectedUser } = useMessage();
+  const messageEndRef = useRef(null);
+  const { messages, getMessages, isLoading, selectedUser, subscribeToMessages, unsubscribeFromMessages } = useMessage();
 
   const messageBubble = (message, received) => {
     const myColor = user.color;
@@ -13,6 +15,7 @@ const ChatArea = () => {
     return (
       <div 
         key={message._id} 
+        ref={messageEndRef}
         style={{alignItems: received ? "self-start" : "self-end"}}
         className="w-full flex flex-col gap-0.5">
         {message.image ? (
@@ -40,6 +43,17 @@ const ChatArea = () => {
       </div>
     )
   }
+
+  useEffect(() => {
+    getMessages();
+    subscribeToMessages();
+    return () => unsubscribeFromMessages();
+  }, [selectedUser._id]);
+
+  useEffect(() => {
+    if (!messageEndRef.current && messages) return;
+    messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
   return (
     <div className="flex-1 pl-4 pr-3 overflow-y-scroll vertical-scrollbar">

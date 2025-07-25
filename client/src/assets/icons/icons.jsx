@@ -212,11 +212,17 @@ export function Bell({ className = "" }) {
       height="24"
       viewBox="0 0 24 24"
       fill="none"
-      stroke="#2b7fff"
+      stroke="url(#bell-gradient)"
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}>
+      <defs>
+        <linearGradient id="bell-gradient" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#2b7fff" />
+          <stop offset="100%" stopColor="#9810fA" />
+        </linearGradient>
+      </defs>
       <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
       <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
     </svg>

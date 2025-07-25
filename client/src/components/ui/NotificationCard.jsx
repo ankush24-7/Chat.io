@@ -35,7 +35,7 @@ export function NotificationCard({ req }) {
       <span className="flex gap-1.5">
         <button
           onClick={handleAccept}
-          className="px-2 py-1 rounded-lg cursor-pointer hover:scale-101 text-white bg-prim-accent">
+          className="px-2 py-1 rounded-lg cursor-pointer hover:scale-101 text-white bg-gradient-to-r from-accent-left to-accent-right">
           Accept
         </button>
         <button

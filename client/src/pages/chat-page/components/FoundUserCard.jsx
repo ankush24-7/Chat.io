@@ -43,7 +43,7 @@ const FoundUserCard = ({ user, label }) => {
           {text === "Add" && (
             <button
               onClick={handleAdd}
-              className="px-2.5 py-1 rounded-lg cursor-pointer text-prim-text bg-prim-accent hover:scale-101">
+              className="px-2.5 py-1 rounded-lg cursor-pointer text-prim-text bg-gradient-to-r from-accent-left to-accent-right">
               Add
             </button>
           )}

@@ -2,6 +2,7 @@ import userAPI from "@/services/api/userAPI";
 import { useNavigate } from "react-router-dom";
 import SpinLoader from "@/components/loaders/SpinLoader";
 import { useEffect, useState, useContext, createContext } from "react";
+import { useSocket } from "./socketContext";
 
 const UserContext = createContext();
 
@@ -13,6 +14,9 @@ export const UserProvider = ({ children }) => {
   const [contacts, setContacts] = useState([]);
   const [requests, setRequests] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  const { onlineUsers } = useSocket();
+  console.log(onlineUsers);
 
   useEffect(() => {
     const getUser = async () => {
@@ -35,7 +39,7 @@ export const UserProvider = ({ children }) => {
         setContacts(response.user.contacts);
         setRequests(response.user.requests);
 
-        setIsLoading(false);
+      setIsLoading(false);
       } catch (error) {
         console.log(error);
       }

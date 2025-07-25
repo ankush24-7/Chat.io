@@ -10,6 +10,7 @@
   --color-second-text: #b3b3b3;
   --color-card: #242526;
   --color-card-hover: #3a3b3c;
-  --color-prim-accent: #155dfc;
-  --color-accent-hover: #2b7fff;
+  --color-accent-left: #2b7fff;
+  --color-accent-right: #9810fA;
+  --color-accent-hover: #C4925A;
 }

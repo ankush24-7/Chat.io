@@ -1,13 +1,15 @@
-import { useMessage } from "@/contexts/messageContext";
 import DisplayPicture from "./DisplayPicture";
+import { useSocket } from "@/contexts/socketContext";
+import { useMessage } from "@/contexts/messageContext";
 
 const ContactCard = ({ user }) => {
+  const { onlineUsers } = useSocket();
   const { setSelectedUser } = useMessage();
 
   return (
     <button 
       onClick={() => setSelectedUser(user)}
-      className="w-full px-1.5 py-3 flex gap-1.5 rounded-xl cursor-default hover:bg-card-hover">
+      className="w-full px-1.5 py-3 flex gap-1.5 rounded-xl cursor-default bg-card hover:bg-card-hover">
       <DisplayPicture
         radius="40px"
         color={user?.color || "#B1401B"}
@@ -19,10 +21,10 @@ const ContactCard = ({ user }) => {
           <p className="max-w-3/5 text-ellipsis overflow-hidden whitespace-nowrap text-sm leading-none text-prim-text">
             {user.username}
           </p>
-          <p className="font-light text-xs text-second-text">30/04/2025</p>
+          {/* <p className="font-light text-xs text-second-text">30/04/2025</p> */}
         </span>
         <p className="max-w-full truncate font-light text-sm text-second-text">
-          Last Message is the last message that was sent to the user.
+          {onlineUsers.includes(user._id) ? "Online" : "Offline"}
         </p>
       </span>
     </button>
