@@ -64,8 +64,7 @@ const updateUser = async (req, res) => {
       message: "User updated" 
     });
   } catch (err) {
-    console.error("Error updating user:", err);
-    return res.status(500).json({ message: "Server error" });
+    return res.status(500).json({ message: err.message });
   }
 };
 

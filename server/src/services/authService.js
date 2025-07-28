@@ -6,7 +6,7 @@ const generateTokens = require("../utils/generateTokens");
 async function registerUser({ fullName, username, email, color, password }) {
   const emailAlreadyExists = await userDAO.findUserByEmail(email);
   if (emailAlreadyExists) {
-    throw new Error("User already exists");
+    throw new Error("Email already exists");
   }
 
   const usernameAlreadyExists = await userDAO.findUserByUsername(username);

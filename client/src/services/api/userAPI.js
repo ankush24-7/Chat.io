@@ -30,7 +30,6 @@ const searchUsers = async (search) => {
     return { status: 200, data: response.data.users };
   } catch (error) {
     return {
-      status: error.response.status,
       data: error.response?.data?.message,
     };
   }

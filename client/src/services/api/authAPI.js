@@ -23,7 +23,7 @@ const logout = async () => {
 const refresh = async () => {
   try {
     const response = await base.post("/api/auth/refresh");
-    return response.data.userId;
+    return {accessToken: response.data.accessToken, userId: response.data.userId};
   } catch (error) {
     console.error(error);
   }
