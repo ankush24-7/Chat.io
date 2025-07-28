@@ -1,17 +1,17 @@
 import useModal from "@/hooks/useModal";
 import { useEffect, useState } from "react";
-import useDropDown from "@/hooks/useDropDown";
 import AddContactModal from "./AddContactModal";
 import { useUser } from "@/contexts/userContext";
 import SearchBar from "@/components/ui/SearchBar";
 import ContactCard from "@/components/ui/ContactCard";
 import { AddIcon, FilterIcon } from "@/assets/icons/icons";
+import { useMessage } from "@/contexts/messageContext";
 
 const ChatSidebar = () => {
   const { contacts } = useUser();
+  const { selectedUser } = useMessage();
   const [search, setSearch] = useState("");
   const { modalRef, showModal, setShowModal } = useModal();
-  const { isOpen, setIsOpen, dropdownRef } = useDropDown();
   const [filteredContacts, setFilteredContacts] = useState(contacts);
 
   useEffect(() => {
@@ -32,8 +32,8 @@ const ChatSidebar = () => {
   }, [search, contacts]);
 
   return (
-    <aside className="lg:min-w-1/5 h-full flex flex-col gap-3 px-2 py-1 bg-second-dark">
-      <span className="flex items-center justify-between gap-3">
+    <aside className={`md:max-w-1/3 lg:min-w-1/4 h-full flex-col gap-3 px-2 py-1 bg-second-dark ${selectedUser ? "hidden md:flex" : "flex"}`}>
+      <span className="flex items-center justify-between gap-3 mt-1.5">
         <SearchBar placeholder="Search" search={search} setSearch={setSearch} />
         <button
           onClick={() => setShowModal(!showModal)}

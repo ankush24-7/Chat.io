@@ -3,8 +3,8 @@ import PersonalInfoForm from "./components/PersonalInfoForm";
 
 const ProfilePage = () => {
   return (
-    <div className="w-full h-full py-4 bg-prim-dark">
-      <div className="w-[45%] h-full flex flex-col p-2 items-center mx-auto rounded-xl bg-second-dark">
+    <div className="w-full h-full md:py-4 bg-prim-dark">
+      <div className="w-full md:w-[55%] lg:w-[45%] h-full flex flex-col p-2 items-center mx-auto rounded-xl bg-second-dark">
         <h1 className="text-2xl text-prim-text">Profile</h1>
         <Profile />
         <PersonalInfoForm />

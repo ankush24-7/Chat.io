@@ -38,10 +38,10 @@ const AddContactModal = forwardRef(({ setShowModal }, ref) => {
   }, [search]);
 
   return (
-    <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-black/20">
+    <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-black/60">
       <div
         ref={ref}
-        className="w-96 h-96 rounded-2xl p-3 flex flex-col gap-2 bg-card">
+        className="w-[95%] h-8/10 lg:w-96 lg:h-96 rounded-2xl p-3 flex flex-col gap-2 bg-card">
         <div className="flex justify-between items-center">
           <h2 className="text-xl text-prim-text">Add Contact</h2>
           <button

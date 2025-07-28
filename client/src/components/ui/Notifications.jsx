@@ -32,6 +32,7 @@ const Notifications = () => {
   }, [requests]);
 
   const bellStroke = requests.length === 0 && "white";
+  const dropdownWidth = window.innerWidth < 768 ? "20rem" : "24rem";
 
   return (
     <div className="relative" ref={dropdownRef}>
@@ -40,13 +41,13 @@ const Notifications = () => {
         className="relative p-1.5 rounded-full cursor-pointer hover:bg-card-hover">
         <Bell className={`stroke-${bellStroke}`} />
         {requests.length > 0 && (
-          <span className="absolute right-0.5 top-1 h-2 w-2 rounded-full bg-gradient-to-r from-accent-left to-accent-right"></span>
+          <span className="absolute right-0.5 top-1 h-2 w-2 rounded-full animate-ping bg-gradient-to-r from-accent-left to-accent-right"></span>
         )}
       </button>
 
       {isOpen && (
         <DropDown
-          width="24rem"
+          width={dropdownWidth}
           position="bottom-right"
           bgColor="#242526"
           header="Notifications"

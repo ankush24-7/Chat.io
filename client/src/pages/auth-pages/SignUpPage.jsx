@@ -49,7 +49,7 @@ const SignUpPage = () => {
 
   return (
     <div className="w-full h-dvh flex-grow overflow-y-scroll vertical-scrollbar sm:pb-10 bg-gradient-to-t from-grad-top to-grad-bottom">
-      <div className="auth-form flex flex-col items-center w-full md:w-[35%] md:rounded-2xl h-full md:h-fit px-10 pt-8 pb-10 sm:mt-10 mx-auto bg-black/30">
+      <div className="auth-form flex flex-col items-center w-full md:w-[55%] lg:w-[35%] md:rounded-2xl h-full md:h-fit px-10 pt-8 pb-10 sm:mt-10 mx-auto bg-black/30">
         <p className="text-white text-3xl">Create Your Account</p>
         <form className="flex flex-col w-full mt-5" onSubmit={handleSignUp}>
           <label htmlFor="fullName" className="text-white">Full Name</label>
@@ -140,7 +140,8 @@ const SignUpPage = () => {
 
           <button
             type="submit"
-            className="flex items-center justify-center p-3 rounded-md mt-5 mb-2 w-full cursor-pointer text-prim-text bg-gradient-to-r from-accent-left to-accent-right hover:scale-101 transition-all duration-300 ease-in-out">
+            className="flex items-center justify-center p-3 rounded-md mt-5 mb-2 w-full cursor-pointer 
+              text-prim-text bg-gradient-to-r from-accent-left to-accent-right hover:scale-101 transition-all duration-300 ease-in-out">
             {isLoading ? (
               <SpinLoader width="24px" height="24px" color="#FFF" />
             ) : (
@@ -151,7 +152,7 @@ const SignUpPage = () => {
 
         <p className="text-start text-sm text-second-text">
           {"Already have an account? "}
-          <Link to="/login">
+          <Link to="/auth/login">
             <span className="underline text-blue-300">
               Login
             </span>

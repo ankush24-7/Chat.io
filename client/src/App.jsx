@@ -6,7 +6,7 @@ import { UserProvider } from "@/contexts/userContext";
 const App = () => {
   return (
     <UserProvider>
-      <div className="flex flex-col h-dvh">
+      <div className="flex flex-col h-dvh antialiased">
         <Header />
         <Outlet />
       </div>

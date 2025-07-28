@@ -21,7 +21,7 @@ const ChatArea = () => {
         {message.image ? (
           <div 
             style={{backgroundColor: received ? otherColor : myColor}}
-            className="max-w-1/2 relative rounded-lg flex flex-col">
+            className="max-w-3/5 md:max-w-1/2 relative rounded-lg flex flex-col">
             <img 
               src={`https://res.cloudinary.com/dcm0pdfet/image/upload/t_chat_img/${message.image}`}
               alt="message-image"

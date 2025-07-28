@@ -6,7 +6,7 @@ const GuestHeader = () => {
       <span className="scale-90 -translate-x-3 md:scale-100 lg:-translate-x-0">
         <h1 className="text-3xl font-mono text-prim-text">Chat.io</h1>
       </span>
-      <ul className="hidden lg:flex lg:items-center lg:gap-6">
+      <ul className="hidden md:flex items-center gap-6">
         <NonIconBtn label="Login" to="/auth/login" />
         <NonIconBtn label="Sign Up" to="/auth/sign-up" />
       </ul>

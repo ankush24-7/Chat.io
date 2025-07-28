@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import GuestHeader from "./components/GuestHeader";
 import ChatTemplate from "./components/ChatTemplate";
 import { useSocket } from "@/contexts/socketContext";
+import { NonIconBtn } from "@/components/ui/Buttons";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 const GuestPage = () => {
@@ -13,7 +14,7 @@ const GuestPage = () => {
 
   useEffect(() => {
     const checkToken = async () => {
-      const userId = await authAPI.refresh();
+      const { userId } = await authAPI.refresh();
       if (userId) {
         navigate("/chat", { replace: true });
         connectSocket(userId);
@@ -25,7 +26,7 @@ const GuestPage = () => {
   }, []);
 
   return (
-    <div className="h-dvh w-full px-10 bg-gradient-to-t from-grad-top to-grad-bottom">
+    <div className="h-dvh w-full px-3 bg-gradient-to-t from-grad-top to-grad-bottom md:px-8 lg:px-10">
       {isLoading ? (
         <div className="w-full h-full flex flex-col items-center pt-20">
           <DotLottieReact
@@ -46,13 +47,19 @@ const GuestPage = () => {
       ) : (
         <div className="w-full h-full relative flex flex-col">
           <GuestHeader />
-          <div className="w-full flex items-center justify-center gap-50 mt-10">
-            <div className="flex flex-col items-start max-w-65">
-              <h2 className="text-6xl text-prim-text">Connect Instantly, Chat Seamlessly</h2>
-              <p className="text-lg mt-4 text-second-text">
+          <div className="w-full flex flex-col items-center justify-center lg:gap-50 mt-10 md:flex-row">
+            <div className="flex flex-col md:max-w-65">
+              <h2 className="text-5xl lg:text-6xl text-center md:text-start text-prim-text">
+                Connect Instantly, Chat Seamlessly
+              </h2>
+              <p className="text-lg mt-2 lg:mt-4 text-center md:text-start text-second-text">
                 Connect with friends and the world around you.
               </p>
             </div>
+            <ul className="w-full justify-center flex md:hidden gap-6 mt-4">
+              <NonIconBtn label="Login" to="/auth/login" />
+              <NonIconBtn label="Sign Up" to="/auth/sign-up" />
+            </ul>
             <ChatTemplate />
           </div>
         </div>

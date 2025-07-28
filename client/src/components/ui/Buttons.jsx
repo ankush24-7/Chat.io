@@ -16,8 +16,8 @@ export function IconBtn({ onClick, Icon, to, label }) {
 export function NonIconBtn({ label, to }) {
   return (
     <Link to={to}>
-      <button className="flex items-center rounded-xl border-[1.5px] px-4 py-2 cursor-pointer hover:bg-dark-hover border-white">
-        <p className="pb-0.5 font-medium leading-none text-prim-text">
+      <button className="flex items-center rounded-xl border-[1.5px] px-5 py-3 md:px-4 md:py-2 cursor-pointer hover:bg-dark-hover border-white">
+        <p className="text-lg md:text-base pb-0.5 font-medium leading-none text-prim-text">
           {label}
         </p>
       </button>

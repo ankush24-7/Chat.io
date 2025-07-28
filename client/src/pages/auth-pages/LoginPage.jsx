@@ -10,7 +10,7 @@ const LoginPage = () => {
 
   return (
     <div className="w-full h-dvh flex-grow overflow-y-scroll vertical-scrollbar sm:pb-10 bg-gradient-to-t from-grad-top to-grad-bottom">
-      <div className="flex flex-col items-center w-full md:w-[35%] md:rounded-2xl h-full md:h-fit px-10 pt-8 pb-16 sm:mt-20 mx-auto bg-black/30">
+      <div className="flex flex-col items-center w-full md:w-[55%] lg:w-[35%] md:rounded-2xl h-full md:h-fit px-10 pt-8 pb-16 sm:mt-20 mx-auto bg-black/30">
         <p className="text-white text-3xl">Welcome Back</p>
         <form className="flex flex-col w-full mt-10" onSubmit={handleLogin}>
           <label htmlFor="input" className="text-white">
@@ -59,7 +59,7 @@ const LoginPage = () => {
 
         <p className="text-start text-sm text-second-text">
           {"Don't have an account? "}
-          <Link to="/sign-up">
+          <Link to="/auth/sign-up">
             <span className="underline text-blue-300">
               Sign Up
             </span>

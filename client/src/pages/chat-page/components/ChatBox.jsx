@@ -7,7 +7,7 @@ const ChatBox = () => {
   const { selectedUser } = useMessage();
 
   return (
-    <div className="w-full h-full bg-second-dark">
+    <div className={`w-full h-full bg-second-dark ${selectedUser ? "flex" : "hidden md:flex"}`}>
       <div className="w-full h-full rounded-tl-xl rounded-br-xl bg-[#111]">
         {selectedUser ? (
           <div className="h-full w-full flex flex-col justify-between">
